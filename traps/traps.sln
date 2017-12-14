@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{A0FC440A-17B8-1299-9D59-C8FC49E71161}") = "traps", "Assembly-CSharp.csproj", "{E56097C9-D8EC-F2DC-5EC4-4C551D14A608}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "traps", "Assembly-CSharp.csproj", "{E56097C9-D8EC-F2DC-5EC4-4C551D14A608}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
