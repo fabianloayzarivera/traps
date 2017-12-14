@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/1Scene_windmill.unity
+- path: Assets/_Scenes/Trap_Scene_Tooths.unity
   isLoaded: 1
   isActive: 1
