@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/_Scenes/1Scene_windmill.unity
+  isLoaded: 1
+  isActive: 1
