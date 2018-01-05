@@ -30,13 +30,13 @@ public class ToothsManager : MonoBehaviour {
 		if (timePassed > interval) {
 			if (!retract) {
 				tooths.transform.Translate (Vector3.up * toothSpeed * Time.deltaTime);
-				if (tooths.transform.position.y >= toothHeight) {					
+				if (tooths.transform.position.y >= (gameObject.transform.position.y + toothHeight)) {					
 					retract = true;
 				}
 			}
 			else {
 				tooths.transform.Translate (Vector3.down * retractionSpeed * Time.deltaTime);
-				if (tooths.transform.position.y <= 0) {
+				if (tooths.transform.position.y <= gameObject.transform.position.y) {
 					retract = false;
 					timePassed = 0;
 				}
