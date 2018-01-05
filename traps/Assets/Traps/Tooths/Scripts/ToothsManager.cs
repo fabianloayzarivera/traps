@@ -43,8 +43,14 @@ public class ToothsManager : MonoBehaviour {
 			}
 	
 		} else {
-			Debug.Log (timePassed);
+			//Debug.Log (timePassed);
 		}
 
 	}
+
+	void OnTriggerEnter(Collider col){
+		if(col.gameObject.tag == "Player")
+			Debug.Log ("DEAD!");
+	}
 }
+

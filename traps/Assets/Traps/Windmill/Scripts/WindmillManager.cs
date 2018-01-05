@@ -15,4 +15,9 @@ public class WindmillManager : MonoBehaviour {
 	void Update () {
 		windmillHead.transform.Rotate(0,rotationSpeed * Time.deltaTime,0);
 	}
+
+	void OnTriggerEnter(Collider col){
+		if(col.gameObject.tag == "Player")
+			Debug.Log ("DEAD!");
+	}
 }

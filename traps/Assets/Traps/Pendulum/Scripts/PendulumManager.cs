@@ -21,18 +21,11 @@ public class PendulumManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //FIX THIS!!
-        //if (maxAngle - Mathf.Abs(angle) < startReductionAngle)
-        //{
-        //    reduction -= 0.10f;
-        //}
-        //else {
-        //    reduction = 1;
-        //}
+        
         realtimeSpeed = angleSpeed * (reduction);
         deltaAngle = realtimeSpeed * Time.deltaTime * factor;
         angle += deltaAngle;
-        Debug.Log(angle);
+        //Debug.Log(angle);
         gameObject.transform.Rotate(Vector3.forward * deltaAngle);
         if (factor > 0) {
             if (angle >= (maxAngle * factor))
@@ -46,5 +39,10 @@ public class PendulumManager : MonoBehaviour {
         }
         
         
+	}
+
+	void OnTriggerEnter(Collider col){
+		if (col.gameObject.tag == "Player")
+			Debug.Log ("DEAD!");
 	}
 }
