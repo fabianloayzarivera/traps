@@ -17,25 +17,7 @@ public class TrapManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space)){
-			Debug.Log ("fire!");
 
-			GameObject shot = Instantiate (projectile, cannon1.transform.position, Quaternion.Euler(new Vector3(0,0,-90))) as GameObject;
-			shot.transform.parent = projectilesParent.gameObject.transform;
-			shot.GetComponent<Rigidbody> ().AddForce (cannon1.transform.up * projectileSpeed);
-
-			GameObject shot2 = Instantiate (projectile, cannon2.transform.position, Quaternion.Euler(new Vector3(0,0,-90))) as GameObject;
-			shot2.transform.parent = projectilesParent.gameObject.transform;
-			shot2.GetComponent<Rigidbody> ().AddForce (cannon2.transform.up * projectileSpeed);
-
-			GameObject shot3 = Instantiate (projectile, cannon3.transform.position, Quaternion.Euler(new Vector3(0,0,-90))) as GameObject;
-			shot3.transform.parent = projectilesParent.gameObject.transform;
-			shot3.GetComponent<Rigidbody> ().AddForce (cannon3.transform.up * projectileSpeed);
-
-			GameObject shot4 = Instantiate (projectile, cannon4.transform.position, Quaternion.Euler(new Vector3(0,0,-90))) as GameObject;
-			shot4.transform.parent = projectilesParent.gameObject.transform;
-			shot4.GetComponent<Rigidbody> ().AddForce (cannon4.transform.up * projectileSpeed);
-		}
 	}
 
 	public void activateTrap(){
