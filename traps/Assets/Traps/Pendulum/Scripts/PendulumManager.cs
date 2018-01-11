@@ -7,11 +7,12 @@ public class PendulumManager : MonoBehaviour {
     public float maxAngle = 45.0f;
     public float angleSpeed = 25.0f;
     public float startReductionAngle = 10.0f;
+	public float initDelay = 0;
     float angle;
     float deltaAngle;
     float realtimeSpeed;
     float reduction = 1;
-
+	bool activated = false;
     int factor = -1;
     // Use this for initialization
     void Start () {
@@ -21,22 +22,30 @@ public class PendulumManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        realtimeSpeed = angleSpeed * (reduction);
-        deltaAngle = realtimeSpeed * Time.deltaTime * factor;
-        angle += deltaAngle;
-        //Debug.Log(angle);
-        gameObject.transform.Rotate(Vector3.forward * deltaAngle);
-        if (factor > 0) {
-            if (angle >= (maxAngle * factor))
-                factor *= -1;
-        }
-        else
-        {
-            if (angle <= (maxAngle * factor))
-                factor *= -1;
 
-        }
+		if (activated) {
+        
+			realtimeSpeed = angleSpeed * (reduction);
+			deltaAngle = realtimeSpeed * Time.deltaTime * factor;
+			angle += deltaAngle;
+			//Debug.Log(angle);
+			gameObject.transform.Rotate (Vector3.forward * deltaAngle);
+			if (factor > 0) {
+				if (angle >= (maxAngle * factor))
+					factor *= -1;
+			} else {
+				if (angle <= (maxAngle * factor))
+					factor *= -1;
+
+			}
+		} else {
+			if (initDelay >= 0) {
+				initDelay -= Time.deltaTime;
+			} else {
+				activated = true;
+			}
+		
+		}
         
         
 	}

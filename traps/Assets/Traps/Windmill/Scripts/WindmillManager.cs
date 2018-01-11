@@ -6,6 +6,9 @@ public class WindmillManager : MonoBehaviour {
 
 	public GameObject windmillHead;
 	public float rotationSpeed = 10;
+	public float initDelay = 0;
+	public bool opositeDirection = false;
+	bool activated = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,7 +16,19 @@ public class WindmillManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		windmillHead.transform.Rotate(0,rotationSpeed * Time.deltaTime,0);
+		if (activated) {
+			if(!opositeDirection)
+				windmillHead.transform.Rotate (0, rotationSpeed * Time.deltaTime, 0);
+			else
+				windmillHead.transform.Rotate (0, rotationSpeed * Time.deltaTime * -1.0f, 0);
+		}else {
+			if (initDelay >= 0) {
+				initDelay -= Time.deltaTime;
+			} else {
+				activated = true;
+			}
+
+		}
 	}
 
 	void OnTriggerEnter(Collider col){

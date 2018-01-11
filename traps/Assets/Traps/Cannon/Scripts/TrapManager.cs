@@ -10,9 +10,14 @@ public class TrapManager : MonoBehaviour {
 	public GameObject cannon4;
 	public GameObject projectilesParent;
 	public float projectileSpeed = 300;
+	public bool automatic = false;
+	public float automaticRatio = 0.5f;
+	public float initDelay = 0;
 	// Use this for initialization
 	void Start () {
-		
+		if (automatic) {
+			InvokeRepeating ("activateTrap", initDelay, automaticRatio);
+		}
 	}
 	
 	// Update is called once per frame
