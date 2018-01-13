@@ -13,6 +13,7 @@ public class TrapManager : MonoBehaviour {
 	public bool automatic = false;
 	public float automaticRatio = 0.5f;
 	public float initDelay = 0;
+	bool activated = true;
 	// Use this for initialization
 	void Start () {
 		if (automatic) {
@@ -26,20 +27,26 @@ public class TrapManager : MonoBehaviour {
 	}
 
 	public void activateTrap(){
-		GameObject shot = Instantiate (projectile, cannon1.transform.position, cannon1.transform.rotation) as GameObject;
-		shot.transform.parent = projectilesParent.gameObject.transform;
-		shot.GetComponent<Rigidbody> ().AddForce (cannon1.transform.up * projectileSpeed);
+		if (activated) {
+			GameObject shot = Instantiate (projectile, cannon1.transform.position, cannon1.transform.rotation) as GameObject;
+			shot.transform.parent = projectilesParent.gameObject.transform;
+			shot.GetComponent<Rigidbody> ().AddForce (cannon1.transform.up * projectileSpeed);
 
-		GameObject shot2 = Instantiate (projectile, cannon2.transform.position, cannon2.transform.rotation) as GameObject;
-		shot2.transform.parent = projectilesParent.gameObject.transform;
-		shot2.GetComponent<Rigidbody> ().AddForce (cannon2.transform.up * projectileSpeed);
+			GameObject shot2 = Instantiate (projectile, cannon2.transform.position, cannon2.transform.rotation) as GameObject;
+			shot2.transform.parent = projectilesParent.gameObject.transform;
+			shot2.GetComponent<Rigidbody> ().AddForce (cannon2.transform.up * projectileSpeed);
 
-		GameObject shot3 = Instantiate (projectile, cannon3.transform.position, cannon3.transform.rotation) as GameObject;
-		shot3.transform.parent = projectilesParent.gameObject.transform;
-		shot3.GetComponent<Rigidbody> ().AddForce (cannon3.transform.up * projectileSpeed);
+			GameObject shot3 = Instantiate (projectile, cannon3.transform.position, cannon3.transform.rotation) as GameObject;
+			shot3.transform.parent = projectilesParent.gameObject.transform;
+			shot3.GetComponent<Rigidbody> ().AddForce (cannon3.transform.up * projectileSpeed);
 
-		GameObject shot4 = Instantiate (projectile, cannon4.transform.position, cannon4.transform.rotation) as GameObject;
-		shot4.transform.parent = projectilesParent.gameObject.transform;
-		shot4.GetComponent<Rigidbody> ().AddForce (cannon4.transform.up * projectileSpeed);
+			GameObject shot4 = Instantiate (projectile, cannon4.transform.position, cannon4.transform.rotation) as GameObject;
+			shot4.transform.parent = projectilesParent.gameObject.transform;
+			shot4.GetComponent<Rigidbody> ().AddForce (cannon4.transform.up * projectileSpeed);
+		}
+	}
+
+	public void deactivateTrap(){
+		activated = false;	
 	}
 }

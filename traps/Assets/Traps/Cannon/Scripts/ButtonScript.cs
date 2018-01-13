@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour {
 
+	public bool deactivateTraps = false;
 	public GameObject[] traps;
 	// Use this for initialization
 	void Start () {
@@ -17,9 +18,16 @@ public class ButtonScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if (col.tag == "Player") {
-			foreach (GameObject trap in traps) {
-				Debug.Log ("Activate " + trap.gameObject.name);
-				trap.gameObject.GetComponent<TrapManager> ().activateTrap ();//change name to trapManager if want to re-use button
+			if (!deactivateTraps) {
+				foreach (GameObject trap in traps) {
+					//Debug.Log ("Activate " + trap.gameObject.name);
+					trap.gameObject.GetComponent<TrapManager> ().activateTrap ();//change name to trapManager if want to re-use button
+				}
+			} else {
+				foreach (GameObject trap in traps) {
+					//Debug.Log ("Activate " + trap.gameObject.name);
+					trap.gameObject.GetComponent<TrapManager> ().deactivateTrap ();//change name to trapManager if want to re-use button
+				}
 			}
 		}
 	}
